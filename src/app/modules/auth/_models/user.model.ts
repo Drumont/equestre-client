@@ -22,5 +22,6 @@ export class UserModel extends AuthModel {
     this.pic = user.pic || './assets/media/users/default.jpg';
     this.permission = user.permission;
     this.phone = user.phone || '';
+    this.licence = user.licence || '';
   }
 }

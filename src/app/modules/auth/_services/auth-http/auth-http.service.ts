@@ -6,6 +6,7 @@ import { environment } from '../../../../../environments/environment';
 import { AuthModel } from '../../_models/auth.model';
 import {removeSummaryDuplicates} from '@angular/compiler';
 import {map, tap} from 'rxjs/operators';
+import {ResponseModel} from '../../_models/response.model';
 
 const API_USERS_URL = environment.apiUrl + 'users';
 
@@ -20,9 +21,11 @@ export class AuthHTTPService {
     return this.http.post<AuthModel>(API_USERS_URL + '/login', { email, phone, password })
         .pipe(
             map( res => {
+                  var response = new ResponseModel();
+                  response = res;
                   const auth = new AuthModel();
-                  auth.accessToken = res.result.token;
-                  auth.refreshToken = res.result.token;
+                  auth.accessToken = response.result.token;
+                  auth.refreshToken = response.result.token;
                   auth.expiresIn = new Date(Date.now() + 100 * 24 * 60 * 60 * 1000);
                   return auth;
             })
@@ -56,17 +59,22 @@ export class AuthHTTPService {
     return this.http.get<UserModel>(API_USERS_URL + '/me', {headers: httpHeaders})
         .pipe(
             map(res => {
+                var response = new ResponseModel();
+                response = res;
                 const user = new UserModel();
-                user.id = res.result.user.id;
-                user.password = res.result.user.password;
-                user.fullname = res.result.account.lastname + ' ' + res.result.account.firstname;
-                user.email = res.result.user.email;
-                user.permission = res.result.user.permission_id ;
-                user.phone = res.result.user.phone;
-                user.licence = res.result.account.licence;
+                user.id = response.result.user.id;
+                user.password = response.result.user.password;
+                user.firstname = response.result.account.firstname;
+                user.lastname = response.result.account.lastname;
+                user.fullname = response.result.account.firstname + ' ' + response.result.account.lastname;
+                user.email = response.result.user.email;
+                user.permission = response.result.user.permission_id ;
+                user.phone = response.result.user.phone;
+                user.licence = response.result.account.licence;
                 return user;
                 }
             )
         );
   }
+
 }

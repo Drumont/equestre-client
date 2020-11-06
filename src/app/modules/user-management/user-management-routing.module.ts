@@ -2,7 +2,8 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { UserManagementComponent } from './user-management.component';
 import { UsersComponent } from './users/users.component';
-import { RolesComponent } from './roles/roles.component';
+import { ProfileComponent } from './profile/profile.component';
+import {AddComponent} from './add/add.component';
 
 const routes: Routes = [
   {
@@ -14,8 +15,12 @@ const routes: Routes = [
         component: UsersComponent,
       },
       {
-        path: 'roles',
-        component: RolesComponent,
+        path: 'profile',
+        component: ProfileComponent,
+      },
+      {
+        path: 'add',
+        component: AddComponent,
       },
       { path: '', redirectTo: 'users', pathMatch: 'full' },
       { path: '**', redirectTo: 'users', pathMatch: 'full' },

@@ -1,0 +1,231 @@
+<div class="card card-custom gutter-b" *ngIf="user$ | async as _user">
+    <div class="card-header">
+        <div class="card-title">
+            <h3 class="card-label">{{ _user.fullname }} profile informations </h3>
+        </div>
+    </div>
+    <div class="card-body">
+        <!--begin: Wizard -->
+        <div
+            #wizard
+            class="wizard wizard-2"
+            id="kt_wizard_v2"
+            data-wizard-state="step-first"
+        >
+            <div class="wizard-nav border-right py-8 px-8 py-lg-20 px-lg-10">
+                <!--begin: Form Wizard Nav -->
+                <div class="wizard-steps">
+                    <a
+                            class="wizard-step"
+                            (click)="isCollapsedAccount = !isCollapsedAccount;
+                             isCollapsedConnection = !isCollapsedConnection"
+                            [attr.aria-expanded]="!isCollapsedAccount"
+                            aria-controls="account_info"
+                    >
+                        <div class="wizard-wrapper">
+                            <div class="wizard-icon">
+                <span
+                        class="svg-icon svg-icon-3x"
+                        [inlineSVG]="'./assets/media/svg/icons/General/User.svg'"
+                ></span>
+                            </div>
+                            <div class="wizard-label">
+                                <div class="wizard-title">Account Settings</div>
+                                <div class="wizard-desc">Setup Your Account Details</div>
+                            </div>
+                        </div>
+                    </a>
+                    <a class="wizard-step" data-wizard-type="step"
+                       (click)="isCollapsedConnection = !isCollapsedConnection;
+                                isCollapsedAccount = !isCollapsedAccount"
+                       [attr.aria-expanded]="!isCollapsedConnection" aria-controls="connection_info">
+                        <div class="wizard-wrapper">
+                            <div class="wizard-icon">
+                <span
+                        class="svg-icon svg-icon-3x"
+                        [inlineSVG]="'./assets/media/svg/icons/Map/Compass.svg'"
+                ></span>
+                            </div>
+                            <div class="wizard-label">
+                                <div class="wizard-title">Connection informations</div>
+                                <div class="wizard-desc">Email, Password</div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <!--end: Form Wizard Nav -->
+            </div>
+            <div class="wizard-body py-8 px-8 py-lg-20 px-lg-10">
+                <!--begin: Wizard Form-->
+                <div class="row">
+                    <div class="offset-xxl-2 col-xxl-8">
+                        <!--begin: Form Wizard Form-->
+                        <div class="pb-5" id="account_info" [ngbCollapse]="isCollapsedAccount">
+                            <form class="form" id="kt_form"
+                                  [formGroup]="updateProfileForm"
+                                  (ngSubmit)="submit()">
+                                <!--begin: Form Wizard Step 1-->
+                                <div
+                                        class="pb-5"
+                                        data-wizard-type="step-content"
+                                        data-wizard-state="current"
+                                >
+                                    <h4 class="mb-10 font-weight-bold text-dark">
+                                        Update your Account Details
+                                    </h4>
+                                    <div class="kt-form__section kt-form__section--first">
+                                        <div class="kt-wizard-v2__form">
+                                            <div class="form-group">
+                                                <label>First Name </label>
+                                                <input
+                                                        type="text"
+                                                        class="form-control"
+                                                        name="firstname"
+                                                        formControlName="firstname"
+                                                        placeholder="First Name"
+                                                        value="{{ _user.firstname }}"
+                                                />
+                                                <span class="form-text text-muted"
+                                                >Please enter your first name.</span
+                                                >
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Last Name</label>
+                                                <input
+                                                        type="text"
+                                                        class="form-control"
+                                                        name="lastname"
+                                                        formControlName="lastname"
+                                                        placeholder="Last Name"
+                                                        value="{{ _user.lastname }}"
+                                                />
+                                                <span class="form-text text-muted">
+                                                    Please enter your last name.
+                                                </span>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-xl-6">
+                                                    <!--<div class="form-group">
+                                                        <label>Phone</label>
+                                                        <input
+                                                                type="tel"
+                                                                class="form-control"
+                                                                name="phone"
+                                                                formControlName="phone"
+                                                                placeholder="phone"
+                                                                value="{{ _user.phone }}"
+                                                        />
+                                                        <span class="form-text text-muted"
+                                                        >Please enter your phone number.</span
+                                                        >
+                                                    </div>-->
+                                                </div>
+                                                <div class="col-xl-6">
+                                                    <div class="form-group">
+                                                        <label>Licence</label>
+                                                        <input
+                                                                type="text"
+                                                                class="form-control"
+                                                                name="licence"
+                                                                formControlName="licence"
+                                                                placeholder="Licence"
+                                                                value="{{ _user.licence }}"
+                                                        />
+                                                        <span class="form-text text-muted"
+                                                        >Please enter your licence</span
+                                                        >
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--end: Form Wizard Step 1-->
+
+                                <!--begin: Form Actions -->
+                                <div class="d-flex justify-content-between border-top pt-10">
+                                    <div>
+                                        <button
+                                                type="submit"
+                                                class="btn btn-success font-weight-bold text-uppercase px-9 py-4"
+
+                                        >
+                                            Submit
+                                        </button>
+                                    </div>
+                                </div>
+                                <!--end: Form Actions -->
+                            </form>
+                        </div>
+                        <!--begin: Form Wizard Step 2-->
+                        <div class="pb-5" id="connection_info" [ngbCollapse]="isCollapsedConnection">
+                            <h4 class="mb-10 font-weight-bold text-dark">
+                                Connexion informations
+                            </h4>
+                            <form class="form" id="kt_form_connexion"
+                                  [formGroup]="updateUserForm"
+                                  (ngSubmit)="submitUser()">
+                                <!--begin: Form Wizard Step 1-->
+                                <div
+                                        class="pb-5"
+                                        data-wizard-type="step-content"
+                                        data-wizard-state="current"
+                                >
+                                    <div class="kt-form__section kt-form__section--first">
+                                        <div class="kt-wizard-v2__form">
+                                            <div class="form-group">
+                                                <label>Email </label>
+                                                <input
+                                                        type="text"
+                                                        disabled="disabled"
+                                                        class="form-control"
+                                                        name="email"
+                                                        formControlName="email"
+                                                        placeholder="Email"
+                                                />
+                                            </div>
+                                            <div class="form-group">
+                                                <label>Phone</label>
+                                                <input
+                                                        type="text"
+                                                        disabled="disabled"
+                                                        class="form-control"
+                                                        name="phone"
+                                                        formControlName="phone"
+                                                        placeholder="Phone number"
+                                                />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--end: Form Wizard Step 1-->
+
+                            </form>
+                        </div>
+                        <!--end: Form Wizard Step 2-->
+
+                        <!--end: Form Wizard Form-->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--end: Wizard -->
+    </div>
+</div>
+
+<ng-template
+    #formError
+    let-control="control"
+    let-message="message"
+    let-validation="validation"
+>
+    <ng-container
+            *ngIf="control.hasError(validation) && (control.dirty || control.touched)"
+    >
+        <div class="fv-plugins-message-container">
+            <div class="fv-help-block">
+                {{ message }}
+            </div>
+        </div>
+    </ng-container>
+</ng-template>

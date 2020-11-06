@@ -19,7 +19,6 @@ export class LayoutComponent implements OnInit, AfterViewInit {
   asideSelfDisplay: true;
   contentClasses = '';
   contentContainerClasses = '';
-  subheaderDisplay = true;
   contentExtended: false;
   asideCSSClasses: string;
   asideHTMLAttributes: any = {};
@@ -52,7 +51,6 @@ export class LayoutComponent implements OnInit, AfterViewInit {
     // build view by layout config settings
     this.selfLayout = this.layout.getProp('self.layout');
     this.asideSelfDisplay = this.layout.getProp('aside.self.display');
-    this.subheaderDisplay = this.layout.getProp('subheader.display');
     this.contentClasses = this.layout.getStringCSSClasses('content');
     this.contentContainerClasses = this.layout.getStringCSSClasses(
       'content_container'
