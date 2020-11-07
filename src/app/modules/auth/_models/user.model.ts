@@ -13,7 +13,7 @@ export class UserModel extends AuthModel {
   licence: string;
 
   setUser(user: any) {
-    this.id = user.id;
+    this.id = user.id || '';
     this.password = user.password || '';
     this.firstname = user.firstname || '';
     this.lastname = user.lastname || '';

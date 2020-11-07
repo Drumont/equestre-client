@@ -1,1 +1,163 @@
-<p>add works!</p>
+<div class="card card-custom gutter-b">
+    <div class="card-header">
+        <div class="card-title">
+            <h3 class="card-label">Add a user</h3>
+        </div>
+    </div>
+    <div class="card-body">
+        <!--begin::Form-->
+        <form class="form" novalidate [formGroup]="addForm" (ngSubmit)="submit()">
+            <ng-container *ngIf="hasError">
+                <div
+                        class="mb-10 alert alert-custom alert-light-danger alert-dismissible"
+                >
+                    <div class="alert-text">The registration details are incorrect</div>
+                </div>
+            </ng-container>
+            <div class="row">
+                <!--begin::Form group-->
+                <div class="form-group form-inline align-self-center">
+                    <label class="font-size-h6 font-weight-bolder text-dark">Type of user: </label>
+                    <select
+                            formControlName="permission"
+                            name="permission"
+                            class="form-control form-control-solid h-auto py-4 px-12 rounded-lg font-size-h6"
+                    >
+                        <option value="1">Administrateur</option>
+                        <option value="2">Moniteur</option>
+                        <option value="3">Cavalier</option>
+                    </select>
+                </div>
+                <!--end::Form group-->
+            </div>
+            <div class="row">
+                <!--begin::Body-->
+                <div class="card-body col-md-6">
+                    <!--begin::Form group-->
+                    <div class="form-group">
+                        <label class="font-size-h6 font-weight-bolder text-dark">Firstname</label>
+                        <input
+                                class="form-control form-control-solid h-auto py-4 px-6 rounded-lg font-size-h6"
+                                type="text"
+                                name="firstname"
+                                formControlName="firstname"
+                                placeholder="Firstname"
+                                autocomplete="off"
+                        />
+                    </div>
+                    <!--end::Form group-->
+
+                    <!--begin::Form group-->
+                    <div class="form-group">
+                        <label class="font-size-h6 font-weight-bolder text-dark">Lastname</label>
+                        <input
+                                class="form-control form-control-solid h-auto py-4 px-6 rounded-lg font-size-h6"
+                                type="text"
+                                name="lastname"
+                                formControlName="lastname"
+                                placeholder="Lastname"
+                                autocomplete="off"
+
+                        />
+                    </div>
+                    <!--end::Form group-->
+
+                    <!--begin::Form group-->
+                    <div class="form-group">
+                        <label class="font-size-h6 font-weight-bolder text-dark">Licence</label>
+                        <input
+                                class="form-control form-control-solid h-auto py-4 px-6 rounded-lg font-size-h6"
+                                type="text"
+                                name="licence"
+                                formControlName="licence"
+                                placeholder="Licence"
+                                autocomplete="off"
+                        />
+                    </div>
+                    <!--end::Form group-->
+
+
+                </div>
+                <!--end::Body-->
+                <!--begin::Footer-->
+                <div class="card-body col-md-6">
+                    <!--begin::Form group-->
+                    <div class="form-group">
+                        <label class="font-size-h6 font-weight-bolder text-dark">Phone number</label>
+                        <input
+                                class="form-control form-control-solid h-auto py-4 px-6 rounded-lg font-size-h6"
+                                type="text"
+                                name="phone"
+                                formControlName="phone"
+                                placeholder="Phone"
+                                autocomplete="off"
+                        />
+                    </div>
+                    <!--end::Form group-->
+
+                    <!--begin::Form group-->
+                    <div class="form-group">
+                        <label class="font-size-h6 font-weight-bolder text-dark">Email</label>
+                        <input
+                                class="form-control form-control-solid h-auto py-4 px-6 rounded-lg font-size-h6"
+                                type="email"
+                                placeholder="Email"
+                                name="email"
+                                formControlName="email"
+                                autocomplete="off"
+                        />
+                    </div>
+                    <!--end::Form group-->
+
+                    <!--begin::Form group-->
+                    <div class="form-group">
+                        <label class="font-size-h6 font-weight-bolder text-dark">Password</label>
+                        <input
+                                class="form-control form-control-solid h-auto py-4 px-6 rounded-lg font-size-h6"
+                                type="password"
+                                placeholder="Password"
+                                name="password"
+                                formControlName="password"
+                                autocomplete="off"
+                        />
+                    </div>
+                    <!--end::Form group-->
+                </div>
+                <!--end::Footer-->
+            </div>
+
+            <!--begin::Form group-->
+            <div class="form-group d-flex flex-wrap pb-lg-0 pb-3">
+                <button
+                        type="submit"
+                        id="kt_add_submit"
+                        class="btn btn-primary font-weight-bolder font-size-h6 px-8 py-4 my-3 mr-4">
+                    Submit
+                </button>
+
+                <ng-container *ngIf="isLoading$ | async">
+                    <span class="spinner spinner-primary ml-5"></span>
+                </ng-container>
+            </div>
+            <!--end::Form group-->
+        </form>
+        <!--end::Form-->
+    </div>
+</div>
+
+<ng-template
+    #formError
+    let-control="control"
+    let-message="message"
+    let-validation="validation"
+>
+    <ng-container
+            *ngIf="control.hasError(validation) && (control.dirty || control.touched)"
+    >
+        <div class="fv-plugins-message-container">
+            <div class="fv-help-block">
+                {{ message }}
+            </div>
+        </div>
+    </ng-container>
+</ng-template>
