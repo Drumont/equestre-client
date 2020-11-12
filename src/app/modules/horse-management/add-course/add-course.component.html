@@ -1,0 +1,162 @@
+<div class="card card-custom gutter-b">
+    <div class="card-header">
+        <div class="card-title">
+            <h3 class="card-label">Add a course</h3>
+        </div>
+    </div>
+    <div class="card-body">
+        <!--begin::Form-->
+        <form class="form" novalidate [formGroup]="addForm" (ngSubmit)="submit()">
+            <ng-container *ngIf="hasError">
+                <div
+                        class="mb-10 alert alert-custom alert-light-danger alert-dismissible"
+                >
+                    <div class="alert-text">The details are incorrect</div>
+                </div>
+            </ng-container>
+            <div class="row">
+                <!--begin::Body-->
+                <div class="card-body col-md-6">
+                    <!--begin::Form group-->
+                    <div class="form-group">
+                        <label class="font-size-h6 font-weight-bolder text-dark">Title</label>
+                        <input
+                                class="form-control form-control-solid h-auto py-4 px-6 rounded-lg font-size-h6"
+                                type="text"
+                                name="title"
+                                formControlName="title"
+                                placeholder="Title"
+                                autocomplete="off"
+                        />
+                    </div>
+                    <!--end::Form group-->
+
+                    <!--begin::Form group-->
+                    <div class="form-group">
+                        <label class="font-size-h6 font-weight-bolder text-dark">Nombre maximum de Cavalier</label>
+                        <select
+                                formControlName="cavalier"
+                                name="cavalier"
+                                class="form-control form-control-solid h-auto py-4 px-12 rounded-lg font-size-h6"
+                        >
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                        </select>
+                    </div>
+                    <!--end::Form group-->
+
+                    <!--begin::Form group-->
+                    <div class="form-group">
+                        <label class="font-size-h6 font-weight-bolder text-dark">Niveau</label>
+                        <select
+                                formControlName="level"
+                                name="level"
+                                class="form-control form-control-solid h-auto py-4 px-12 rounded-lg font-size-h6"
+                        >
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                        </select>
+                    </div>
+                    <!--end::Form group-->
+
+
+                </div>
+                <!--end::Body-->
+                <!--begin::Footer-->
+                <div class="card-body col-md-6">
+
+                    <!--begin::Form group-->
+                    <div class="form-group">
+                        <label class="font-size-h6 font-weight-bolder text-dark">Duration</label>
+                        <select
+                                formControlName="duration"
+                                name="duration"
+                                class="form-control form-control-solid h-auto py-4 px-12 rounded-lg font-size-h6"
+                        >
+                            <option value="1">1 hours</option>
+                            <option value="2">2 hours</option>
+                            <option value="3">3 hours</option>
+                            <option value="4">4 hours</option>
+                            <option value="5">5 hours</option>
+                        </select>
+                    </div>
+                    <!--end::Form group-->
+                    <!--begin::Form group-->
+                    <div class="form-group">
+                        <label class="font-size-h6 font-weight-bolder text-dark">Date</label>
+                        <div class="form-inline">
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <input class="form-control" placeholder="yyyy-mm-dd" name="dp" formControlName="started" ngbDatepicker #d="ngbDatepicker">
+                                    <div class="input-group-append">
+                                        <button class="btn btn-primary" (click)="d.toggle()" type="button">
+                                            <i class="la la-calendar"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--end::Form group-->
+
+                    <!--begin::Form group-->
+                    <div class="row">
+                        <div class="form-group  ">
+                            <label class="font-size-h6 font-weight-bolder text-dark">Time</label>
+                            <ngb-timepicker formControlName="time"></ngb-timepicker>
+                        </div>
+                    </div>
+                    <!--end::Form group-->
+                </div>
+                <!--end::Footer-->
+            </div>
+
+            <!--begin::Form group-->
+            <div class="form-group d-flex flex-wrap pb-lg-0 pb-3">
+                <button
+                        type="submit"
+                        id="kt_add_submit"
+                        class="btn btn-primary font-weight-bolder font-size-h6 px-8 py-4 my-3 mr-4">
+                    Submit
+                </button>
+
+                <ng-container *ngIf="isLoading$ | async">
+                    <span class="spinner spinner-primary ml-5"></span>
+                </ng-container>
+            </div>
+            <!--end::Form group-->
+        </form>
+        <!--end::Form-->
+    </div>
+</div>
+
+<ng-template
+    #formError
+    let-control="control"
+    let-message="message"
+    let-validation="validation"
+>
+    <ng-container
+            *ngIf="control.hasError(validation) && (control.dirty || control.touched)"
+    >
+        <div class="fv-plugins-message-container">
+            <div class="fv-help-block">
+                {{ message }}
+            </div>
+        </div>
+    </ng-container>
+</ng-template>
+

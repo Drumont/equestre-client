@@ -6,9 +6,11 @@ import { AddComponent } from './add/add.component';
 import {HorseManagementRoutingModule} from './horse-management-routing.module';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {InlineSVGModule} from 'ng-inline-svg';
-import {NgbCollapseModule} from '@ng-bootstrap/ng-bootstrap';
+import {NgbCollapseModule, NgbDatepickerModule, NgbTimepicker, NgbTimepickerModule} from '@ng-bootstrap/ng-bootstrap';
 import {EditComponent} from './edit/edit.component';
 import {CoreModule} from '../../_metronic/core';
+import { CoursesComponent } from './courses/courses.component';
+import { AddCourseComponent } from './add-course/add-course.component';
 
 
 
@@ -17,7 +19,9 @@ import {CoreModule} from '../../_metronic/core';
     HorseManagementComponent,
     HorsesComponent,
     AddComponent,
-    EditComponent
+    EditComponent,
+    CoursesComponent,
+    AddCourseComponent
   ],
   imports: [
     CommonModule,
@@ -26,7 +30,9 @@ import {CoreModule} from '../../_metronic/core';
     InlineSVGModule,
     ReactiveFormsModule,
     NgbCollapseModule,
-    CoreModule
+    CoreModule,
+    NgbDatepickerModule,
+    NgbTimepickerModule
   ]
 })
 export class HorseManagementModule { }
