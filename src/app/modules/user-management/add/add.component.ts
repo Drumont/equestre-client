@@ -110,7 +110,7 @@ export class AddComponent implements OnInit, OnDestroy {
         .pipe(first())
         .subscribe((user: UserModel) => {
           if (user) {
-            this.router.navigate(['/']);
+            this.router.navigate(['user-management/users']);
           } else {
             this.hasError = true;
           }

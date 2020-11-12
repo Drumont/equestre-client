@@ -19,6 +19,7 @@ export class LayoutComponent implements OnInit, AfterViewInit {
   asideSelfDisplay: true;
   contentClasses = '';
   contentContainerClasses = '';
+  subheaderDisplay = true;
   contentExtended: false;
   asideCSSClasses: string;
   asideHTMLAttributes: any = {};

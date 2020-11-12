@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { DashboardComponent } from './dashboard.component';
+import { DashboardComponent} from './dashboard.component';
 // import { DashboardsModule } from '../../_metronic/partials/content/dashboards/dashboards.module';
 
 @NgModule({
@@ -14,7 +14,7 @@ import { DashboardComponent } from './dashboard.component';
         component: DashboardComponent,
       },
     ]),
-    // DashboardsModule,
+     // DashboardsModule,
   ],
 })
 export class DashboardModule {}

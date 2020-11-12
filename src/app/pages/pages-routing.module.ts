@@ -24,36 +24,13 @@ const routes: Routes = [
                 (m) => m.UserManagementModule
             ),
       },
-        /*
       {
-        path: 'ecommerce',
+        path: 'horse-management',
         loadChildren: () =>
-          import('../modules/e-commerce/e-commerce.module').then(
-            (m) => m.ECommerceModule
-          ),
+            import('../modules/horse-management/horse-management.module').then(
+                (m) => m.HorseManagementModule
+            ),
       },
-      {
-        path: 'ngbootstrap',
-        loadChildren: () =>
-          import('../modules/ngbootstrap/ngbootstrap.module').then(
-            (m) => m.NgbootstrapModule
-          ),
-      },
-      {
-        path: 'wizards',
-        loadChildren: () =>
-          import('../modules/wizards/wizards.module').then(
-            (m) => m.WizardsModule
-          ),
-      },
-      {
-        path: 'material',
-        loadChildren: () =>
-          import('../modules/material/material.module').then(
-            (m) => m.MaterialModule
-          ),
-      },
-         */
       {
         path: '',
         redirectTo: 'dashboard',

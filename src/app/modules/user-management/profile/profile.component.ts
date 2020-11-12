@@ -30,7 +30,6 @@ export class ProfileComponent implements OnInit, OnDestroy {
   constructor( private auth: AuthService,
                private userService: UserService,
                private fb: FormBuilder,
-               private fb2: FormBuilder,
                private router: Router) { }
 
   // convenience getter for easy access to form fields
@@ -123,7 +122,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
         .updateAccount(updateUser)
         .pipe(first())
         .subscribe(() => {
-          this.router.navigate(['/profile']);
+          this.router.navigate(['/user-management/profile']);
         });
     this.unsubscribe.push(updateSubscr);
   }

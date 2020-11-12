@@ -72,7 +72,7 @@ export class UserService {
                   return of(undefined);
               }),
               finalize(() => this.isLoadingSubject.next(false))
-              );
+          );
   }
 }
 

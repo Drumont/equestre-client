@@ -1,0 +1,32 @@
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { HorseManagementComponent } from './horse-management.component';
+import { HorsesComponent } from './horses/horses.component';
+import { AddComponent } from './add/add.component';
+import {HorseManagementRoutingModule} from './horse-management-routing.module';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {InlineSVGModule} from 'ng-inline-svg';
+import {NgbCollapseModule} from '@ng-bootstrap/ng-bootstrap';
+import {EditComponent} from './edit/edit.component';
+import {CoreModule} from '../../_metronic/core';
+
+
+
+@NgModule({
+  declarations: [
+    HorseManagementComponent,
+    HorsesComponent,
+    AddComponent,
+    EditComponent
+  ],
+  imports: [
+    CommonModule,
+    HorseManagementRoutingModule,
+    FormsModule,
+    InlineSVGModule,
+    ReactiveFormsModule,
+    NgbCollapseModule,
+    CoreModule
+  ]
+})
+export class HorseManagementModule { }

@@ -18,7 +18,7 @@ export class AuthHTTPService {
 
   // public methods
   login(email: string, phone: number, password: string): Observable<any> {
-    return this.http.post<AuthModel>(API_USERS_URL + '/login', { email, phone, password })
+    return this.http.post<any>(API_USERS_URL + '/login', { email, phone, password })
         .pipe(
             map( res => {
                   var response = new ResponseModel();
@@ -56,7 +56,7 @@ export class AuthHTTPService {
     const httpHeaders = new HttpHeaders({
       Authorization: 'Bearer ' + token
     });
-    return this.http.get<UserModel>(API_USERS_URL + '/me', {headers: httpHeaders})
+    return this.http.get<any>(API_USERS_URL + '/me', {headers: httpHeaders})
         .pipe(
             map(res => {
                 var response = new ResponseModel();
