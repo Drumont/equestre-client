@@ -25,17 +25,6 @@
     </div>
     <!--end::Title-->
 
-    <!-- begin::Alert info-->
-    <ng-container *ngIf="!hasError">
-      <div class="mb-10 alert alert-custom alert-light-info alert-dismissible">
-        <div class="alert-text">
-          Use account <strong>{{ defaultAuth.email }}</strong> and password
-          <strong>{{ defaultAuth.password }}</strong> to continue.
-        </div>
-      </div>
-    </ng-container>
-    <!-- end::Alert info-->
-
     <!-- begin::Alert error-->
     <ng-container *ngIf="hasError">
       <div
@@ -151,16 +140,6 @@
         [disabled]="loginForm.invalid"
       >
         Sign In
-      </button>
-
-      <button
-        type="button"
-        class="btn btn-light-primary font-weight-bolder px-8 py-4 my-3 font-size-lg"
-      >
-        <span class="svg-icon svg-icon-md">
-          <img src="./assets/media/svg/social-icons/google.svg" />
-        </span>
-        Sign in with Google
       </button>
 
       <ng-container *ngIf="isLoading$ | async">

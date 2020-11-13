@@ -9,17 +9,12 @@ export const routes: Routes = [
       import('./modules/auth/auth.module').then((m) => m.AuthModule),
   },
   {
-    path: 'error',
-    loadChildren: () =>
-      import('./modules/errors/errors.module').then((m) => m.ErrorsModule),
-  },
-  {
     path: '',
     canActivate: [AuthGuard],
     loadChildren: () =>
       import('./pages/layout.module').then((m) => m.LayoutModule),
   },
-  { path: '**', redirectTo: 'errors/404', pathMatch: 'full' },
+  { path: '**', redirectTo: '/', pathMatch: 'full' },
 ];
 
 @NgModule({
