@@ -9,6 +9,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {InlineSVGModule} from 'ng-inline-svg';
 import {NgbCollapseModule, NgbDatepickerModule, NgbTimepickerModule} from '@ng-bootstrap/ng-bootstrap';
 import {CoreModule} from '../../_metronic/core';
+import { SessionsComponent } from './sessions/sessions.component';
 
 
 
@@ -17,7 +18,8 @@ import {CoreModule} from '../../_metronic/core';
     SessionManagementComponent,
     CoursesComponent,
     AddCourseComponent,
-    EditCourseComponent
+    EditCourseComponent,
+    SessionsComponent
   ],
   imports: [
     CommonModule,

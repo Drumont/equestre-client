@@ -94,6 +94,37 @@ export class CourseService {
         );
   }
 
+  getMyCourse(): Observable<CourseModel> {
+        this.isLoadingSubject.next(true);
+        return this.http.get<any>(API_COURSES_URL + '/all-by-user', {})
+            .pipe(
+                map(res => {
+                    this.isLoadingSubject.next(false);
+                    let response = new ResponseModel();
+                    response = res;
+                    if (response.status === 'success') {
+                        this.isLoadingSubject.next(false);
+                        return response.result.map(item => {
+                            const course = new CourseModel();
+                            course.setCourse(item);
+                            course.createdBy = item.createdBy_id;
+                            course.cavalier = item.max_participant;
+                            const date = this.translateToClient(item.started_date);
+                            course.time = date;
+                            course.started = date;
+                            console.log(course);
+                            return course;
+                        });
+                    }
+                }),
+                catchError((err) => {
+                    console.error('err', err);
+                    return of(undefined);
+                }),
+                finalize(() => this.isLoadingSubject.next(false))
+            );
+    }
+
   updateCourse(course: CourseModel): Observable<any> {
     const title = course.title;
     const level = course.level;

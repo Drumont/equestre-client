@@ -5,6 +5,7 @@ import {SessionManagementComponent} from './session-management.component';
 import {CoursesComponent} from './courses/courses.component';
 import {AddCourseComponent} from './add-course/add-course.component';
 import {EditCourseComponent} from './edit-course/edit-course.component';
+import {SessionsComponent} from './sessions/sessions.component';
 
 const routes: Routes = [
   {
@@ -22,6 +23,10 @@ const routes: Routes = [
       {
         path: 'edit-course',
         component: EditCourseComponent,
+      },
+      {
+        path: 'sessions',
+        component: SessionsComponent,
       },
       { path: '', redirectTo: 'courses', pathMatch: 'full' },
       { path: '**', redirectTo: 'courses', pathMatch: 'full' },
