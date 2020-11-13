@@ -9,8 +9,6 @@ import {InlineSVGModule} from 'ng-inline-svg';
 import {NgbCollapseModule, NgbDatepickerModule, NgbTimepicker, NgbTimepickerModule} from '@ng-bootstrap/ng-bootstrap';
 import {EditComponent} from './edit/edit.component';
 import {CoreModule} from '../../_metronic/core';
-import { CoursesComponent } from './courses/courses.component';
-import { AddCourseComponent } from './add-course/add-course.component';
 
 
 
@@ -20,8 +18,6 @@ import { AddCourseComponent } from './add-course/add-course.component';
     HorsesComponent,
     AddComponent,
     EditComponent,
-    CoursesComponent,
-    AddCourseComponent
   ],
   imports: [
     CommonModule,

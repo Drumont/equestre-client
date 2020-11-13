@@ -144,7 +144,7 @@
 
                                 <!--begin: Form Actions -->
                                 <div class="d-flex justify-content-between border-top pt-10">
-                                    <div>
+                                    <div *ngIf="isMonitor || isAdmin">
                                         <button
                                                 type="submit"
                                                 class="btn btn-success font-weight-bold text-uppercase px-9 py-4"

@@ -40,6 +40,7 @@ export class HorseService {
   add(horse: HorseModel): Observable<any> {
     const name = horse.name;
     const breed = horse.breed;
+      // tslint:disable-next-line:variable-name
     const createdBy_id = horse.createdBy;
     this.isLoadingSubject.next(true);
     return this.http.post<any>(API_HORSES_URL + '/add',
@@ -118,7 +119,7 @@ export class HorseService {
           );
   }
 
-    updateHorse(horse: HorseModel): Observable<any> {
+  updateHorse(horse: HorseModel): Observable<any> {
         const name = horse.name;
         const breed = horse.breed;
         const id = horse.id;

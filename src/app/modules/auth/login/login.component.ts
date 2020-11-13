@@ -83,6 +83,9 @@ export class LoginComponent implements OnInit, OnDestroy {
       .pipe(first())
       .subscribe((user) => {
         if (user) {
+          if (this.authService.isAdmin()) {
+            this.router.navigate(['user-management/users']);
+          }
           this.router.navigate([this.returnUrl]);
         } else {
           this.hasError = true;

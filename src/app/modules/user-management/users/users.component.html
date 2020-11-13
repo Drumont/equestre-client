@@ -1,29 +1,66 @@
-<div class="card card-custom gutter-b">
-  <div class="card-header">
-    <div class="card-title">
-      <h3 class="card-label">Generated Config</h3>
-    </div>
-  </div>
-  <div class="card-body">
-    <!--begin::Example-->
-    <div class="example mb-10">
-      <p>
-        Use for layout config in
-        <code>/src/app/core/_config/layout.config.ts</code>
-      </p>
-      <div class="example-code">
-        <div class="example-code">
-          <span
-                  class="example-copy"
-                  data-placement="left"
-                  ngbTooltip="Copy code"
-          ></span>
-          <div class="example-highlight">
 
+<div class="row" *ngIf="users | async as users">
+  <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6" *ngFor="let user of users">
+    <div class="card card-custom gutter-b card-stretch">
+      <div class="card-body pt-4">
+        <!--begin::User-->
+        <div class="d-flex align-items-center mb-7">
+          <!--begin::Pic-->
+          <div class="flex-shrink-0 mr-4 mt-lg-0 mt-3">
+            <div class="symbol symbol-lg-75 symbol-circle symbol-primary">
+                            <span class="symbol-label font-size-h3 font-weight-boldest">
+                                {{ user.fullname | firstLetter }}
+                            </span>
+            </div>
+          </div>
+          <!--end::Pic-->
+          <!--begin::Title-->
+          <div class="d-flex flex-column">
+            <a href="#" class="text-dark font-weight-bold text-hover-primary font-size-h4 mb-0">{{ user.fullname }}</a>
+            <span class="text-muted font-weight-bold"></span>
+          </div>
+          <!--end::Title-->
+        </div>
+        <!--end::User-->
+        <!--begin::Info-->
+        <div class="mb-7">
+          <div class="d-flex justify-content-between align-items-center">
+            <span class="text-dark-75 font-weight-bolder mr-2">Email:</span>
+            <span class="text-muted text-hover-primary">{{user.email}}</span>
+          </div>
+        </div>
+        <!--end::Info-->
+        <!--begin::Info-->
+        <div class="mb-7">
+          <div class="d-flex justify-content-between align-items-center">
+            <span class="text-dark-75 font-weight-bolder mr-2">Phone:</span>
+            <span class="text-muted text-hover-primary">{{user.phone}}</span>
+          </div>
+        </div>
+        <!--end::Info-->
+        <!--begin::Info-->
+        <div class="mb-7">
+          <div class="d-flex justify-content-between align-items-center">
+            <span class="text-dark-75 font-weight-bolder mr-2">Licence:</span>
+            <span class="text-muted text-hover-primary">{{user.licence}}</span>
+          </div>
+        </div>
+        <!--end::Info-->
+        <!--begin::Info-->
+        <div class="mb-7">
+          <div class="d-flex justify-content-between align-items-center">
+            <span class="text-dark-75 font-weight-bolder mr-2">Permission:</span>
+            <span class="text-muted text-hover-primary">{{permission(user.permission) }}</span>
+          </div>
+        </div>
+        <!--end::Info-->
+        <div class="row">
+          <div class="col-xl-12">
+            <a class="btn btn-block btn-sm btn-light-primary font-weight-bolder text-uppercase py-4">View</a>
           </div>
         </div>
       </div>
+
     </div>
-    <!--end::Example-->
   </div>
 </div>

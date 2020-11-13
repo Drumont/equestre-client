@@ -85,7 +85,7 @@
 
       <!-- User Management -->
       <!-- begin::1 Level -->
-      <li
+      <li *ngIf="isAdmin"
         class="menu-item menu-item-submenu"
         aria-haspopup="true"
         data-menu-toggle="hover"
@@ -225,7 +225,7 @@
             </li>
             <!-- end::2 Level -->
             <!-- begin::2 Level -->
-            <li
+            <li *ngIf="isAdmin"
                     class="menu-item"
                     routerLinkActive="menu-item-active"
                     aria-haspopup="true"
@@ -243,6 +243,41 @@
               </a>
             </li>
             <!-- end::2 Level -->
+          </ul>
+        </div>
+      </li>
+      <!-- end::1 Level -->
+
+      <!-- Session Management -->
+      <!-- begin::1 Level -->
+      <li
+              class="menu-item menu-item-submenu"
+              aria-haspopup="true"
+              data-menu-toggle="hover"
+              routerLinkActive="menu-item-open"
+      >
+        <a
+                class="menu-link menu-toggle"
+                routerLinkActive="active"
+                href="/session-management"
+        >
+          <span
+                  [inlineSVG]="'./assets/media/svg/icons/General/User.svg'"
+                  cacheSVG="true"
+                  class="svg-icon menu-icon"
+          ></span>
+          <span class="menu-text">Session Management</span>
+          <i class="menu-arrow"></i>
+        </a>
+        <div class="menu-submenu">
+          <i class="menu-arrow"></i>
+          <ul class="menu-subnav">
+            <!-- <li class="menu-item menu-item-parent" aria-haspopup="true">
+              <span class="menu-link">
+                <span class="menu-text">User Management</span>
+              </span>
+            </li> -->
+
             <!-- begin::2 Level -->
             <li
                     class="menu-item"
@@ -252,7 +287,7 @@
             >
               <a
                       class="menu-link"
-                      routerLink="/horse-management/courses"
+                      routerLink="/session-management/courses"
                       routerLinkActive="active"
               >
                 <i class="menu-bullet menu-bullet-dot">
@@ -263,7 +298,7 @@
             </li>
             <!-- end::2 Level -->
             <!-- begin::2 Level -->
-            <li
+            <li *ngIf="isMonitor"
                     class="menu-item"
                     routerLinkActive="menu-item-active"
                     aria-haspopup="true"
@@ -271,7 +306,7 @@
             >
               <a
                       class="menu-link"
-                      routerLink="/horse-management/add-course"
+                      routerLink="/session-management/add-course"
                       routerLinkActive="active"
               >
                 <i class="menu-bullet menu-bullet-dot">
@@ -285,7 +320,6 @@
         </div>
       </li>
       <!-- end::1 Level -->
-
 
       <!-- Errors -->
       <!-- begin::1 Level -->

@@ -1,0 +1,109 @@
+<div class="row" *ngIf="courses | async as courses">
+    <div class="card card-custom card-stretch gutter-b">
+        <!--begin::Header-->
+        <div class="card-header border-0 py-5">
+            <h3 class="card-title align-items-start flex-column">
+                <span class="card-label font-weight-bolder text-dark">Courses</span>
+                <span class="text-muted mt-3 font-weight-bold font-size-sm">
+                    You can register for a course here
+                </span>
+            </h3>
+            <div class="card-toolbar">
+                <div *ngIf="hasError">
+                    <div class="mb-5 alert alert-custom alert-light-danger alert-dismissible">
+                        <div class="alert-text">You are already add to this course</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--end::Header-->
+
+        <!--begin::Body-->
+        <div class="card-body pt-0 pb-3">
+            <div class="tab-content">
+                <!--begin::Table-->
+                <div class="table-responsive">
+                    <table
+                            class="table table-head-custom table-head-bg table-borderless table-vertical-center"
+                    >
+                        <thead>
+                        <tr class="text-left text-uppercase">
+                            <th style="min-width: 150px;" class="pl-7">
+                                <span class="text-dark-75">Title</span>
+                            </th>
+                            <th style="min-width: 80px;">Level</th>
+                            <th style="min-width: 80px;">Started Date</th>
+                            <th style="min-width: 80px;">Time</th>
+                            <th style="min-width: 80px;">Duration</th>
+                            <th style="min-width: 80px;">Max participants</th>
+                            <th style="min-width: 70px;"></th>
+                            <th style="min-width: 70px;"></th>
+                            <th style="min-width: 70px;"></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr *ngFor="let course of courses">
+                            <td class="pl-0 py-8">
+                                <div class="d-flex align-items-center">
+                                    <div class="symbol symbol-50 symbol-light mr-4">
+                                    </div>
+                                    <div>
+                                        <a class="text-dark-75 font-weight-bolder text-hover-primary
+                                        mb-1 font-size-lg cursor-pointer"> {{course.title}}</a>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <span class="text-dark-75 font-weight-bolder d-block font-size-lg">
+                                  {{course.level}}
+                                </span>
+                            </td>
+                            <td>
+                                <span class="text-dark-75 font-weight-bolder d-block font-size-lg">
+                                  {{ course.started | date:'EEE dd-MM-yyyy' }}
+                                </span>
+                            </td>
+                            <td>
+                                <span class="text-dark-75 font-weight-bolder d-block font-size-lg">
+                                  {{course.time | date: 'hh:mm'}}
+                                </span>
+                            </td>
+                            <td>
+                                <span class="text-dark-75 font-weight-bolder d-block font-size-lg">
+                                    {{course.duration}}
+                                </span>
+                            </td>
+                            <td>
+                                <span class="text-dark-75 font-weight-bolder d-block font-size-lg">
+                                    {{course.cavalier}}
+                                </span>
+                            </td>
+                            <td class="pr-0 text-right">
+                                <a (click)="edit(course)" *ngIf="isMonitor"
+                                        class="btn btn-light-warning font-weight-bolder font-size-sm cursor-pointer"
+                                >Edit
+                                </a>
+                            </td>
+                            <td class="pr-0 text-right">
+                                <a (click)="register(course.id)"
+                                        class="btn btn-light-success font-weight-bolder font-size-sm cursor-pointer"
+                                >Register</a
+                                >
+                            </td>
+                            <td class="pr-0 text-right" >
+                                <a *ngIf="isAdmin || isMonitor"
+                                        class="btn btn-light-danger font-weight-bolder font-size-sm cursor-pointer"
+                                >Delete</a
+                                >
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <!--end::Table-->
+            </div>
+        </div>
+        <!--end::Body-->
+    </div>
+</div>
+

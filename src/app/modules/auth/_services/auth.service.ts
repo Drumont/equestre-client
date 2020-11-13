@@ -139,6 +139,27 @@ export class AuthService implements OnDestroy {
     }
   }
 
+  isAdmin(): boolean {
+    if (this.currentUserValue.permission === 1 ) { return true; }
+    else {
+      return false;
+    }
+  }
+
+  isCavalier(): boolean {
+    if (this.currentUserValue.permission === 2 ) { return true; }
+    else {
+      return false;
+    }
+  }
+
+  isMoniteur(): boolean {
+    if (this.currentUserValue.permission === 3 ) { return true; }
+    else {
+      return false;
+    }
+  }
+
   ngOnDestroy() {
     this.unsubscribe.forEach((sb) => sb.unsubscribe());
   }

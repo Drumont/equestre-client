@@ -7,6 +7,7 @@ import {environment} from '../../../../environments/environment';
 import {catchError, finalize, first, map, switchAll, switchMap} from 'rxjs/operators';
 import {AuthService} from '../../auth/_services/auth.service';
 import {ResponseModel} from '../../auth/_models/response.model';
+import {HorseModel} from '../../horse-management/_models/horse.model';
 
 const API_USERS_URL = environment.apiUrl + 'users';
 
@@ -50,6 +51,7 @@ export class UserService {
       const firstname = user.firstname;
       const lastname = user.lastname;
       const licence = user.licence;
+      // tslint:disable-next-line:variable-name
       const permission_id = user.permission;
       const email = user.email;
       const password = user.password;
@@ -60,7 +62,7 @@ export class UserService {
           .pipe(
               map( res => {
                   this.isLoadingSubject.next(false);
-                  var response = new ResponseModel();
+                  let response = new ResponseModel();
                   response = res;
                   if (response.status === 'success') {
                       this.isLoadingSubject.next(false);
@@ -74,5 +76,36 @@ export class UserService {
               finalize(() => this.isLoadingSubject.next(false))
           );
   }
+
+  getAllUsers(): Observable<UserModel> {
+        this.isLoadingSubject.next(true);
+        return this.http.get<any>(API_USERS_URL + '/all', {})
+            .pipe(
+                map(res => {
+                    this.isLoadingSubject.next(false);
+                    let response = new ResponseModel();
+                    response = res;
+                    if (response.status === 'success') {
+                        this.isLoadingSubject.next(false);
+                        return response.result.map(item => {
+                            const user = new UserModel();
+                            user.setUser(item);
+                            user.firstname = item.Account.firstname;
+                            user.lastname = item.Account.lastname;
+                            user.licence = item.Account.licence;
+                            user.permission = item.permission_id;
+                            user.fullname = item.Account.firstname + ' ' + item.Account.lastname; ;
+                            console.log(user);
+                            return user;
+                        });
+                    }
+                }),
+                catchError((err) => {
+                    console.error('err', err);
+                    return of(undefined);
+                }),
+                finalize(() => this.isLoadingSubject.next(false))
+            );
+    }
 }
 

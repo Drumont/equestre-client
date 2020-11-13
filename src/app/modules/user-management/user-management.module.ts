@@ -8,6 +8,7 @@ import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {InlineSVGModule} from 'ng-inline-svg';
 import {NgbCollapseModule} from '@ng-bootstrap/ng-bootstrap';
 import { AddComponent } from './add/add.component';
+import {CoreModule} from '../../_metronic/core';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { AddComponent } from './add/add.component';
     FormsModule,
     InlineSVGModule,
     ReactiveFormsModule,
-    NgbCollapseModule
+    NgbCollapseModule,
+    CoreModule
   ],
 })
 export class UserManagementModule {}

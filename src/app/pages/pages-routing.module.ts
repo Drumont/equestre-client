@@ -32,6 +32,13 @@ const routes: Routes = [
             ),
       },
       {
+        path: 'session-management',
+        loadChildren: () =>
+            import('../modules/session-management/session-management.module').then(
+                (m) => m.SessionManagementModule
+            ),
+      },
+      {
         path: '',
         redirectTo: 'dashboard',
         pathMatch: 'full',

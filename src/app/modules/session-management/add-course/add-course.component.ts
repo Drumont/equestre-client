@@ -1,9 +1,7 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Observable, Subscription} from 'rxjs';
-import {UserService} from '../../user-management/_services/user.service';
 import {Router} from '@angular/router';
-import {UserModel} from '../../auth/_models/user.model';
 import {first} from 'rxjs/operators';
 import {CourseModel} from '../_models/course.service';
 import {CourseService} from '../_services/course.service';
@@ -106,7 +104,7 @@ export class AddCourseComponent implements OnInit, OnDestroy {
         .subscribe((course) => {
           if (course) {
             console.log(course);
-            this.router.navigate(['horse-management/courses']);
+            this.router.navigate(['session-management/courses']);
           } else {
             this.hasError = true;
           }

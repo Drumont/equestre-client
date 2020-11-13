@@ -23,6 +23,8 @@ export class ProfileComponent implements OnInit, OnDestroy {
   updateUserForm: FormGroup;
   isCollapsedAccount = false;
   isCollapsedConnection = true;
+  isAdmin: boolean;
+  isMonitor: boolean;
 
   // private fields
   private unsubscribe: Subscription[] = [];
@@ -40,6 +42,8 @@ export class ProfileComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.user$ = this.auth.currentUserSubject.asObservable();
     this.initForm();
+    this.isAdmin = this.auth.isAdmin();
+    this.isMonitor = this.auth.isMoniteur();
   }
 
   initForm() {
